@@ -57,5 +57,21 @@ app.get("/:id", async (req, res) => {
   }
 })
 
+const app = express();
+const port = 8080;
+app.use('/', express.static(__dirname + '/../public'));
+
+app.post('/Master', (req, res) => {
+
+    var name = req.body.name;
+    var pwd = req.body.pwd;
+
+    db.getMasterid(function(err, results){
+        if(err) {
+            res.send(500, "Server get  Error from Masterid");
+            return;
+        }
+        
+
 const port = process.env.PORT || 8080
 app.listen(port, () => console.log(`Listening on port ${port}`))
